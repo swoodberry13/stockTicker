@@ -37,7 +37,7 @@ const connStr = "mongodb+srv://sloanwoodberry:NOSQL@cluster0.jeroq5g.mongodb.net
 
 client = new MongoClient(connStr);
 await client.connect();
-
+res.write("connected to mongo");
 // Select db and collection
 var db_object = client.db("stock");
 var collection = db_object.collection('PublicCompanies');
