@@ -22,14 +22,14 @@ file.on('line', async function(line) {
 		const url = "mongodb+srv://sloanwoodberry:NOSQL@cluster0.jeroq5g.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
 		try {
-			console.log("trying to mongo");
+			
 			const client = new MongoClient(url);
 			await client.connect();
 			const db = client.db("stock");
 			const collection = db.collection('PublicCompanies');
 			const result = await collection.insertOne(doc);
 			client.close();
-			cosole.log("finished mongoing")
+			
 		} 
 		catch (err) {
 			console.log("failed to mongo")
