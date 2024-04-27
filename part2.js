@@ -39,7 +39,7 @@ client = new MongoClient(connStr);
 await client.connect();
 
 // Select db and collection
-var db_object = client.db("Stock");
+var db_object = client.db("stock");
 var collection = db_object.collection('PublicCompanies');
 
 //store results 
