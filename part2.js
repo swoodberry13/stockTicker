@@ -14,9 +14,9 @@ html = "<form method='GET' action='/process'>" +
 "<label for='stock'>Search by stock symbol or company name</label></br>" +
 "<input type='text' id='stock' name='stock'></input></br>" + 
 "<input type='radio' id='symbol' name='radio' value='symbol'></input>" + 
-"<label for='symbol'>Symbol</label></br>" +
+"<label for='symbol'>symbol</label></br>" +
 "<input type='radio' id='name' name='radio' value='name'></input>" +
-"<label for='name'>Name</label></br>" + 
+"<label for='name'>name</label></br>" + 
 "<input type='submit' value='Search'>" +
 "</form>";
 res.write(html);
@@ -33,14 +33,15 @@ query = { "name": `${stock}`};
 
 
 //Connect Mongo
-const connStr = "mongodb+srv://sloanwoodberry:NOSQL@cluster0.jeroq5g.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const url = "mongodb+srv://sloanwoodberry:NOSQL@cluster0.jeroq5g.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
-client = new MongoClient(connStr);
+const client = new MongoClient(url);
+res.write("connecting to mongo");
 await client.connect();
 res.write("connected to mongo");
 // Select db and collection
-var db_object = client.db("stock");
-var collection = db_object.collection('PublicCompanies');
+const db_object = client.db("stock");
+const collection = db_object.collection('PublicCompanies');
 
 //store results 
 const results = collection.find(query);
