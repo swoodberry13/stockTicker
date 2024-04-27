@@ -36,7 +36,7 @@ query = { "name": `${stock}`};
 const url = "mongodb+srv://sloanwoodberry:NOSQL@cluster0.jeroq5g.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
 const client = new MongoClient(url);
-res.write("connecting to mongo");
+
 await client.connect();
 res.write("connected to mongo");
 // Select db and collection
