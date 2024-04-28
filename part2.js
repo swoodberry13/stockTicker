@@ -40,8 +40,8 @@ const client = new MongoClient(url);
 await client.connect();
 res.write("connected to mongo");
 // Select db and collection
-const db_object = client.db("stock");
-const collection = db_object.collection('PublicCompanies');
+const db = client.db("stock");
+const collection = db.collection('PublicCompanies');
 
 //store results 
 const results = collection.find(query);
@@ -49,9 +49,9 @@ const results = collection.find(query);
 resultsString = ``;
 // Print document info
 for await (const doc of results) {
-console.dir("Name: " + doc.name);
-console.dir("Symbol: " + doc.symbol);
-console.dir("Price: " + doc.price);
+console.dir("name: " + doc.name);
+console.dir("symbol: " + doc.symbol);
+console.dir("price: " + doc.price);
 res.write(`<div><p>${doc.name}, ${doc.symbol}: $${doc.price}</p></div>`)
 }
 
